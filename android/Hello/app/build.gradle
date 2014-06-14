@@ -1,4 +1,5 @@
 apply plugin: 'android'
+apply plugin: 'robolectric'
 
 android {
     compileSdkVersion 19
@@ -17,8 +18,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        androidTest {
+            setRoot('src/test')
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile 'junit:junit:4.10'
+    androidTestCompile 'org.robolectric:robolectric:2.3+'
+    //androidTestCompile 'com.squareup:fest-android:1.0.+'
+}
+
+robolectric {
+    // configure the set of classes for JUnit tests
+    include '**/*Test.class'
+    exclude '**/espresso/**/*.class'
+
+    // configure max heap size of the test JVM
+    maxHeapSize = "2048m"
 }

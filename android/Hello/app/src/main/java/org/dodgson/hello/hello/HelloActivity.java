@@ -12,9 +12,12 @@ public class HelloActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello);
-        setTitle("Hello, Android Studio!");
+        setTitle(getMyTitle());
     }
 
+    public String getMyTitle() {
+        return "Hello, Android Studio!";
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

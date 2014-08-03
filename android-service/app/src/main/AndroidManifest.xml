@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <service android:name=".HelloIntentService" />
+        <service android:name=".HelloBindingService" />
         <activity
             android:name=".Hello"
             android:label="@string/app_name" >

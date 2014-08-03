@@ -10,12 +10,18 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
             <Button
-                android:id="@+id/hello_button"
+                android:id="@+id/intent_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello"/>
+                android:text="Hello, Intent Service!"/>
+            <Button
+                android:id="@+id/bound_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello, Bound Service!"/>
         </LinearLayout>
 
 </RelativeLayout>

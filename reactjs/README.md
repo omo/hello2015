@@ -7,3 +7,4 @@
 See
 
  * https://www.npmjs.org/package/grunt-react
+ * https://github.com/jmreidy/grunt-browserify 

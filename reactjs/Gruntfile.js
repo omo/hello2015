@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'src',
         src: ['**/*.jsx'],
-        dest: 'build/',
+        dest: 'build/modules/',
         ext: '.js'
       }
     },
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 //        transform: [ require('grunt-react').browserify ],
       },
       app: {
-        src: ['build/hello.js'],
+        src: ['build/modules/*.js'],
         dest: 'build/javascript/main.js'
       }
     }

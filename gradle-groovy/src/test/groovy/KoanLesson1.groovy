@@ -12,28 +12,28 @@ import rx.schedulers.Schedulers
 def class KoanLesson1 {
   @Test
   void simpleSubscription() {
-    Observable.just(42).subscribe({ x -> assert x == 42 })
+    Observable.just(42).subscribe({ assert it == 42 })
   }
 
   @Test
   void whatGoesInComesOut() {
-    Observable.just(101).subscribe({ int x -> assert x == 101 })
+    Observable.just(101).subscribe({ assert it == 101 })
   }
 
   @Test
   void thisIsTheSameAsAnEventStream() {
     def events = PublishSubject.create();
-    events.subscribe({ x -> assert 37 == x })
+    events.subscribe({ assert 37 == it })
     events.onNext(37)
   }
 
   @Test
   void howEventStreamsRelateToObservables() {
     def observableResult = 1
-    Observable.just(73).subscribe({ i -> observableResult = i })
+    Observable.just(73).subscribe({ observableResult = it })
     def eventStreamResult = 1
     def events = PublishSubject.create()
-    events.subscribe({ i -> eventStreamResult = i })
+    events.subscribe({ eventStreamResult = it })
     events.onNext(73)
     assert eventStreamResult == observableResult
   }
@@ -51,7 +51,7 @@ def class KoanLesson1 {
   @Test
   void simpleReturn() {
     def received = ""
-    Observable.just("foo").subscribe({ String s -> received = s })
+    Observable.just("foo").subscribe({ received = it })
     assert received == "foo"
   }
 
@@ -60,7 +60,7 @@ def class KoanLesson1 {
     def received = ""
     def names = [ "foo", "bar" ]
     // XXX: RxJava/RxGroovy doesn't have toObservable()
-    Observable.from(names).subscribe({ s -> received = s })
+    Observable.from(names).subscribe({ received = it })
     assert received == "bar"
   }
 
@@ -68,7 +68,7 @@ def class KoanLesson1 {
   void everyThingCounts() {
     def received = 0
     def numbers = [ 3, 4 ]
-    Observable.from(numbers).subscribe({ Integer x -> received += x })
+    Observable.from(numbers).subscribe({ received += it })
     assert 7 == received
   }
 
@@ -86,7 +86,7 @@ def class KoanLesson1 {
   void allEventsWillBeReceived() {
     def received = "Working "
     def numbers = 9..5
-    Observable.from(numbers).subscribe({ i  -> received += i })
+    Observable.from(numbers).subscribe({ received += it })
     assert "Working 98765" == received
   }
 
@@ -94,8 +94,9 @@ def class KoanLesson1 {
   void doingInTheMiddle() {
     def status = []
     def daysTillTest = Observable.from(4..1)
-    daysTillTest.doOnNext({ Integer d ->
-      status.add(d + "=" + (d == 1 ? "Study Like Mad" : "Party")) }).subscribe()
+    daysTillTest.doOnNext(
+      { status.add(it + "=" + (it == 1 ? "Study Like Mad" : "Party")) }
+    ).subscribe()
     assert "[4=Party, 3=Party, 2=Party, 1=Study Like Mad]" ==  status.toString()
   }
 
@@ -103,7 +104,7 @@ def class KoanLesson1 {
   void nothingListensUntilYouSubscribe() {
     def sum = 0
     def numbers = Observable.from(1..5)
-    def observable = numbers.doOnNext({ Integer n -> sum += n })
+    def observable = numbers.doOnNext({ sum += it })
     assert sum == 0
     observable.subscribe()
     assert 1 + 2 + 3 + 4 + 5 == sum
@@ -158,11 +159,11 @@ def class KoanLesson1 {
     def numbers = 1..9
     Subscription un = null
     un = Observable.from(numbers, Schedulers.newThread()).subscribe(
-      { Integer x ->
-        received += x
+      {
+        received += it
         // XXX: This should assume that the new thread is slow enough for
         // |un| to be assigned.
-        if (x == 5) {
+        if (it == 5) {
           System.out.println(un)
           un.unsubscribe()
         }

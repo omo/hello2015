@@ -15,6 +15,8 @@ dependencies {
   compile 'com.netflix.rxjava:rxjava-groovy:0.+'
   // https://github.com/ReactiveX/RxJavaMath
   compile 'com.netflix.rxjava:rxjava-math:0.+'
+  // https://github.com/ReactiveX/RxJavaAsyncUtil/
+  compile 'com.netflix.rxjava:rxjava-async-util:0.+'
   testCompile 'junit:junit-dep:4.10'
   testCompile 'org.mockito:mockito-core:1.8.5'
 }

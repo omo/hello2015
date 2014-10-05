@@ -2,6 +2,7 @@ package es.flakiness.firstapp
 
 import android.app.Activity
 import android.app.Fragment
+import android.content.res.Resources
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.view.LayoutInflater
@@ -18,7 +19,6 @@ public class DisplayMessageActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Seems like the default is already true but anyway...
         this.actionBar.displayHomeAsUpEnabled = true
-
         setContentView(R.layout.activity_display_message)
         (findViewById(R.id.display_message_container) as ViewGroup).addView(new TextView(this).with {
             textSize = 40

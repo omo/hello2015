@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--string name="app_name">FirstApp</string-->
+    <string name="hello_world">ハローワールド!</string>
+    <string name="action_settings">設定</string>
+    <string name="edit_message">メッセージはこちら...</string>
+    <string name="button_send">送信</string>
+    <string name="title_activity_display_message">マイメッセージ</string>
+    <string name="action_search">検索</string>
+    <string name="received_message_is">受信したメッセージ:</string>
+
+</resources>

@@ -1,8 +1,24 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+   </style>
+    <!--
+    http://developer.android.com/training/basics/actionbar/styling.html
+    http://developer.android.com/guide/topics/ui/themes.html
+    The doc says you should read the code to learn about built-in styles. Seriously???
+    https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/themes.xml
+    https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/res/res/values/styles.xml
+
+    To learn about windowActionbarOverlay: http://developer.android.com/training/basics/actionbar/overlaying.html
+     -->
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:background">@drawable/actionbar_background</item>
     </style>
 
+    <drawable name="actionbar_background">#806666cc</drawable>
 </resources>

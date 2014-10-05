@@ -3,6 +3,7 @@ package es.flakiness.firstapp
 import android.app.Activity
 import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.NavUtils
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -15,7 +16,11 @@ public class DisplayMessageActivity extends Activity {
     @Override
     void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(new TextView(this).with {
+        // Seems like the default is already true but anyway...
+        this.actionBar.displayHomeAsUpEnabled = true
+
+        setContentView(R.layout.activity_display_message)
+        (findViewById(R.id.display_message_container) as ViewGroup).addView(new TextView(this).with {
             textSize = 40
             setText(this.intent.getStringExtra(MainActivity.EXTRA_MESSAGE))
             it
@@ -24,12 +29,20 @@ public class DisplayMessageActivity extends Activity {
 
     @Override
     boolean onOptionsItemSelected(MenuItem item) {
-        def id = item.itemId
-        if (id == R.id.action_settings) {
-            return true
-        }
+        switch(item.itemId) {
+            // XXX: I'm not sure how this can be useful.
+            // http://developer.android.com/training/implementing-navigation/ancestral.html
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this)
+                return true
+            case R.id.action_search:
+                return true
+            case R.id.action_settings:
+                return true
+            default:
+                super.onOptionsItemSelected(item)
 
-        super.onOptionsItemSelected(item)
+        }
     }
 
     /**

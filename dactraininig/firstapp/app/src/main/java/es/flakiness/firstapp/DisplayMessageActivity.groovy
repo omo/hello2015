@@ -22,7 +22,8 @@ public class DisplayMessageActivity extends Activity {
         setContentView(R.layout.activity_display_message)
         (findViewById(R.id.display_message_container) as ViewGroup).addView(new TextView(this).with {
             textSize = 40
-            setText(this.intent.getStringExtra(MainActivity.EXTRA_MESSAGE))
+            def text = resources.getString(R.string.received_message_is) + this.intent.getStringExtra(MainActivity.EXTRA_MESSAGE)
+            setText(text)
             it
         })
     }

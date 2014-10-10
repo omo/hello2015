@@ -23,6 +23,17 @@ public class MainActivity extends Activity {
             intent.putExtra(EXTRA_MESSAGE, message)
             startActivity(intent)
         })
+
+        def self = this
+        (findViewById(R.id.action_bar_button) as Button).setOnClickListener({
+            // XXX: This causes error. Should report.
+            // http://groovy.329449.n5.nabble.com/java-lang-NoClassDefFoundError-void-with-ternary-td5721372.html
+            //self.actionBar.showing ? self.actionBar.hide() : self.actionBar.show()
+            if (self.actionBar.showing)
+               self.actionBar.hide()
+            else
+               self.actionBar.show()
+        })
     }
 
     @Override

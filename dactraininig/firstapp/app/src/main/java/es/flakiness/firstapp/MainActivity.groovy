@@ -1,20 +1,54 @@
 package es.flakiness.firstapp
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+
+@groovy.transform.CompileStatic
+class StartCounter implements Closeable {
+    Activity mContext
+    int mCount
+    SharedPreferences mPrefs
+
+    StartCounter(Activity context) {
+        mContext = context
+        mPrefs = mContext.getPreferences(Context.MODE_PRIVATE)
+        mCount = mPrefs.getInt("numCreated", 0)
+    }
+
+    @Override
+    void close() throws IOException {
+        mPrefs.edit().with {
+            putInt("numCreated", mCount + 1)
+            commit()
+        }
+    }
+
+    def show() {
+        Toast.makeText(mContext, "This app is created ${mCount} times", 1000).show()
+    }
+}
 
 @groovy.transform.CompileStatic
 public class MainActivity extends Activity {
     public static final String EXTRA_MESSAGE = MainActivity.package.name + ".MESSAGE";
 
+    private StartCounter mStartCounter
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState)
+
+        Log.d(MainActivity.simpleName, savedInstanceState?.getString("myKey") ?: "No State")
+
         setContentView(R.layout.activity_main)
 
         (findViewById(R.id.send_button) as Button).setOnClickListener({
@@ -34,6 +68,8 @@ public class MainActivity extends Activity {
             else
                self.actionBar.show()
         })
+
+        mStartCounter = new StartCounter(this)
     }
 
     @Override
@@ -50,5 +86,31 @@ public class MainActivity extends Activity {
         }
 
         super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle bundle) {
+        bundle.putString("myKey", "Hello?")
+        super.onSaveInstanceState(bundle)
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop()
+        Log.d(MainActivity.simpleName, "onStop")
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart()
+        Log.d(MainActivity.simpleName, "onStart")
+        mStartCounter.show()
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy()
+        Log.d(MainActivity.simpleName, "onDestroy")
+        mStartCounter.close()
     }
 }

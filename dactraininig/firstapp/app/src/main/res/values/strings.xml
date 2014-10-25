@@ -10,5 +10,8 @@
     <string name="action_search">Search</string>
     <string name="received_message_is">Received message:</string>
     <string name="button_action_bar">Toggle Action Bar</string>
+    <string name="title_activity_database">DatabaseActivity</string>
+    <string name="open_database">Open Database</string>
+    <string name="action_create_database">Create Database</string>
 
 </resources>

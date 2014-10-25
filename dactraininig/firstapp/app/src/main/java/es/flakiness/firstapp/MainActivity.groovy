@@ -58,16 +58,19 @@ public class MainActivity extends Activity {
             startActivity(intent)
         })
 
-        def self = this
         (findViewById(R.id.action_bar_button) as Button).setOnClickListener({
             // XXX: This causes error. Should report.
             // http://groovy.329449.n5.nabble.com/java-lang-NoClassDefFoundError-void-with-ternary-td5721372.html
             //self.actionBar.showing ? self.actionBar.hide() : self.actionBar.show()
-            if (self.actionBar.showing)
-               self.actionBar.hide()
+            if (actionBar.showing)
+               actionBar.hide()
             else
-               self.actionBar.show()
+               actionBar.show()
         })
+
+        (findViewById(R.id.database_button) as Button).onClickListener = {
+            startActivity(new Intent(this, DatabaseActivity))
+        }
 
         mStartCounter = new StartCounter(this)
     }

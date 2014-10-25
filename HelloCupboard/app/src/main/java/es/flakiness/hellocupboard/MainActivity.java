@@ -10,32 +10,29 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ((Button)findViewById(R.id.add_new_button)).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        App.get(MainActivity.this).addNew();
-                    }
-                }
-        );
-
-        ((Button)findViewById(R.id.run_query_button)).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        List<Greet> list = App.get(MainActivity.this).getList();
-                        Toast.makeText(MainActivity.this, "Count:" + list.size(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
+        ButterKnife.inject(this);
     }
+
+    @OnClick(R.id.run_query_button)
+    public void onRunQuery() {
+        List<Greet> list = App.get(this).getList();
+        Toast.makeText(this, "Count:" + list.size(), Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.add_new_button)
+    public void onAddView() {
+        App.get(MainActivity.this).addNew();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

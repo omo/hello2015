@@ -21,5 +21,6 @@ android {
 
 dependencies {
     compile 'nl.qbusict:cupboard:+'
+    compile 'com.jakewharton:butterknife:5.1.2+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

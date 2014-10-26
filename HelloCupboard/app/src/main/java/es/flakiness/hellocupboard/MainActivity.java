@@ -10,29 +10,33 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends Activity {
+
+    @Inject Greeter mGreeter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
+        App.inject(this);
     }
 
     @OnClick(R.id.run_query_button)
     public void onRunQuery() {
-        List<Greet> list = App.get(this).getList();
+        List<Greet> list = mGreeter.getList();
         Toast.makeText(this, "Count:" + list.size(), Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.add_new_button)
     public void onAddView() {
-        App.get(MainActivity.this).addNew();
+        mGreeter.addNew();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

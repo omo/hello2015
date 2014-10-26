@@ -2,6 +2,9 @@ package es.flakiness.hellocupboard;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -24,7 +27,13 @@ public class HelloModule {
     }
 
     @Provides @Singleton
-    SQLiteDatabase provideDatabase() {
+    public SQLiteDatabase provideDatabase() {
         return mDatabaseHelper.getWritableDatabase();
+    }
+
+    @Provides @Singleton
+    public Bus provideBus() {
+
+        return new Bus(ThreadEnforcer.MAIN);
     }
 }

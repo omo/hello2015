@@ -2,7 +2,9 @@ package es.flakiness.hellomedia;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,12 +12,16 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 
 public class MainActivity extends Activity {
+
+    private MediaPlayer player;
 
     @InjectView(R.id.url_text)
     TextView urlText;
@@ -28,6 +34,44 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
         intent.setType("audio/*");
         startActivityForResult(intent, 1);
+    }
+
+    @OnClick(R.id.button_play)
+    public void onClickPlay() {
+        if (null == urlText.getText() || 0 == urlText.getText().length()) {
+            Toast.makeText(this, "Nothing to play", Toast.LENGTH_SHORT).show();
+        }
+
+        Uri uri = Uri.parse(urlText.getText().toString());
+        playNew(uri);
+    }
+
+    @OnClick(R.id.button_stop)
+    public void onClickStop() {
+        if (null != player && player.isPlaying())
+            player.stop();
+    }
+
+    void playNew(Uri uri) {
+        if (player != null) {
+            player.stop();
+            player.release();
+        }
+
+        player = new MediaPlayer();
+
+        try {
+            player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            player.setDataSource(getApplicationContext(), uri);
+            player.prepare();
+            player.start();
+            Toast.makeText(this, "Started...", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            player.release();
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -43,6 +87,7 @@ public class MainActivity extends Activity {
             mmr.setDataSource(this, uri);
             String title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
             titleText.setText(title);
+            mmr.release();
         }
 
     }

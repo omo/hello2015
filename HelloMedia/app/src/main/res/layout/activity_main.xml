@@ -19,4 +19,14 @@
         android:text="ACTION_GET_CONTENT"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_play"
+        android:text="Play"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_stop"
+        android:text="Stop"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -17,26 +17,24 @@ build/
 # Local configuration file (sdk path, etc)
 local.properties
 
-# Windows thumbnail db
-Thumbs.db
-
-# OSX files
-.DS_Store
-
 # Eclipse project files
 .classpath
 .project
+
+# Windows thumbnail db
+.DS_Store
 
 # IDEA/Android Studio project files, because
 # the project can be imported from settings.gradle
 .idea
 *.iml
-# Local IDEA workspace
-.idea/workspace.xml
 
 # Old-style IDEA project files
 *.ipr
 *.iws
+
+# Local IDEA workspace
+.idea/workspace.xml
 
 # Gradle cache
 .gradle
@@ -44,3 +42,4 @@ Thumbs.db
 # Sandbox stuff
 _sandbox
 
+app/src/main/java/flakiness/es/hello/ApplicationKeys.java

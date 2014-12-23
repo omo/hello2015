@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FirstApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="edit_message">Write something..</string>
+    <string name="button_send">Send</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="action_search">Search</string>
+    <string name="received_message_is">Received message:</string>
+    <string name="button_action_bar">Toggle Action Bar</string>
+    <string name="title_activity_database">DatabaseActivity</string>
+    <string name="open_database">Open Database</string>
+    <string name="action_create_database">Create Database</string>
+
+</resources>

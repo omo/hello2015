@@ -119,6 +119,24 @@ fn reference_example() {
     println!("{}", *y);
 }
 
+fn box_example() {
+    let x = Box::new(5);
+    println!("{}", *x);
+}
+
+fn collect_example() {
+    //let one_to_one_hundred = (1..101).collect::<Vec<i32>>();
+    let one_to_one_hundred = (1..101).collect::<Vec<_>>();
+    println!("{:?}", one_to_one_hundred);
+}
+
+fn find_example() {
+    match (1..100).find(|x| *x > 42) {
+        Some(x) => println!("Found {}", x),
+        None => println!("Nothing found"),
+    }
+}
+
 pub fn main() {
     let x = 1;
     let (y, z) = (2, 3);
@@ -142,4 +160,7 @@ pub fn main() {
     array_example();
     vector_example();
     reference_example();
+    box_example();
+    collect_example();
+    find_example();
 }

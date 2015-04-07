@@ -1,4 +1,10 @@
 
+mod mymod {
+    pub fn hello() {
+        println!("Hello, Module!");
+    }
+}
+
 struct Point {
     x: i32,
     y: i32,
@@ -101,7 +107,19 @@ fn vector_example() {
     }
 }
 
-fn main() {
+#[test]
+fn it_works() {
+    assert!(true);
+}
+
+fn reference_example() {
+    let x = 123;
+    let y = &x;
+    println!("{:p}", y);
+    println!("{}", *y);
+}
+
+pub fn main() {
     let x = 1;
     let (y, z) = (2, 3);
     let w: i32 = 5;
@@ -109,6 +127,7 @@ fn main() {
     v = v + 7;
     println!("Hello, World! {}", v + w + x + y + z);
 
+    mymod::hello();
     print_number(10);
     print_sum(10, 20);
     if_example();
@@ -122,4 +141,5 @@ fn main() {
     string_example();
     array_example();
     vector_example();
+    reference_example();
 }

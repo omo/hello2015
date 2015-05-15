@@ -1,0 +1,4 @@
+[package]
+name = "5min-rust"
+version = "0.1.0"
+authors = ["Hajime Morrita <omo@dodgson.org>"]

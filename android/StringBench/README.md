@@ -1,7 +1,7 @@
 
 # Comparing different ways of concatinating strings
 
-10,0000 iterations, N7v2, Android 5.1.1
+10,000 iterations, N7v2, Android 5.1.1
 
  * `String.format()`: 653ms
  * native concat: under 56ms

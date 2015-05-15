@@ -16,3 +16,7 @@ This tells:
 What I learned
 
  * `javac` kindly uses `StringBuilder` for string concatinations.
+
+See:
+ * https://github.com/omo/hello/blob/master/android/StringBench/app/src/main/java/es/flakiness/hello/stringbench/stringbenchmarks/MainActivity.java
+ 

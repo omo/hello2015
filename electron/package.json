@@ -1,0 +1,12 @@
+{
+  "name"    : "your-app",
+  "version" : "0.1.0",
+  "main"    : "bin/main.js",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-typescript": "*",
+    "electron-packager": "*",
+    "electron-prebuilt": "*",
+    "tsd": "*"
+  }
+}

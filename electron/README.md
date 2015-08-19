@@ -17,5 +17,5 @@ TIL:
 
 TODO:
 
- * Automate Electron startup
- * Automate type file installation through package.json
+ * Automate Packaging
+ 

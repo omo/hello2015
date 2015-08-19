@@ -5,6 +5,13 @@
   "dependencies": {
     "react": "*"
   },
+
+  "scripts" : {
+    "build": "gulp",
+    "e": "electron .",
+    "init": "tsd reinstall --save --overwrite"
+  },
+
   "devDependencies": {
     "gulp": "*",
     "gulp-typescript": "*",

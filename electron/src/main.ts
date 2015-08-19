@@ -1,5 +1,5 @@
 /// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/github-electron/github-electron.d.ts" />
+/// <reference path="../typings/github-electron/github-electron-main.d.ts" />
 
 import E = GitHubElectron;
 var app : E.App = require('app');

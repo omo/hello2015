@@ -13,6 +13,12 @@
     },
     "react/react.d.ts": {
       "commit": "efa0c1196d7280640e624ac1e7fa604502e7bd63"
+    },
+    "github-electron/github-electron-main.d.ts": {
+      "commit": "bb45306d0fd8ce0852a8d24c023fd787f4151e65"
+    },
+    "github-electron/github-electron-renderer.d.ts": {
+      "commit": "bb45306d0fd8ce0852a8d24c023fd787f4151e65"
     }
   }
 }

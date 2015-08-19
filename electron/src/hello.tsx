@@ -1,9 +1,9 @@
-/// <reference path="../typings/github-electron/github-electron.d.ts" />
 /// <reference path="../typings/react/react.d.ts" />
 import React = require("react");
+/// <reference path="../typings/github-electron/github-electron-renderer.d.ts" />
+import remote = require('remote');
 
-var remote = require('remote');
-var remoteWindow : GitHubElectron.BrowserWindow = remote.getCurrentWindow();
+var remoteWindow = remote.getCurrentWindow();
 
 export class Hello extends React.Component<any, any> {
   render() : React.ReactElement<any> {

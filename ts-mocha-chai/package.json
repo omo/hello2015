@@ -1,0 +1,22 @@
+{
+  "name"    : "hello",
+  "version" : "0.1.0",
+  "main"    : "bin/main.js",
+  "dependencies": {
+  },
+
+  "scripts" : {
+    "build": "gulp",
+    "test": "gulp && mocha bin", 
+    "init": "tsd reinstall --save --overwrite"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "gulp": "*",
+    "gulp-typescript": "*",
+    "tsd": "*",
+    "typescript": "next"
+  }
+}

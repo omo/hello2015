@@ -1,8 +1,9 @@
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/github-electron/github-electron.d.ts" />
 
-var app : GitHubElectron.App = require('app');
-var BrowserWindow : typeof GitHubElectron.BrowserWindow = require('browser-window');
+import E = GitHubElectron;
+var app : E.App = require('app');
+var BrowserWindow : typeof E.BrowserWindow = require('browser-window');
 
 app.on('window-all-closed', () => {
   app.quit();

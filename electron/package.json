@@ -1,12 +1,16 @@
 {
-  "name"    : "your-app",
+  "name"    : "hello",
   "version" : "0.1.0",
   "main"    : "bin/main.js",
+  "dependencies": {
+    "react": "*"
+  },
   "devDependencies": {
     "gulp": "*",
     "gulp-typescript": "*",
     "electron-packager": "*",
     "electron-prebuilt": "*",
-    "tsd": "*"
+    "tsd": "*",
+    "typescript": "Microsoft/TypeScript"
   }
 }

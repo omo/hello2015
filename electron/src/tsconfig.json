@@ -17,9 +17,11 @@
     "filesGlob": [
         "./**/*.ts",
         "./**/*.tsx",
-        "!./node_modules/**/*"
+        "!../node_modules/**/*"
     ],
     "files": [
-        "./main.ts"
+        "./main.ts",
+        "./hello.tsx",
+        "./index.tsx"
     ]
 }

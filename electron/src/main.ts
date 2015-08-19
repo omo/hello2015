@@ -11,5 +11,6 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
   var mainWindow = new BrowserWindow({ width: 800, height: 600 });
   mainWindow.on('closed', () => { mainWindow = null; });
+  mainWindow.openDevTools();
   mainWindow.loadUrl('file://' + __dirname + '/../index.html');
 });

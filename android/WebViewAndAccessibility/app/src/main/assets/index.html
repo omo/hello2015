@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+(function() {
+  function clickHandler(evt) {
+    if (evt.target.tagName != "A") {
+        return;
+    }
+
+    evt.preventDefault();
+    evt.stopPropagation();
+    bridge.notifyLinkIsClicked(evt.target.href);
+  }
+
+  document.addEventListener("click", clickHandler);
+})();
+</script>
+</head>
+<body>
+Go to: <a href="https://google.com/">Google</a>
+</body>
+</html>
